@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用xhr提交数据.html</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <script>
+        const xhr  = new XMLHttpRequest();
+        xhr.open('post','http://hmajax.itheima.net/api/register')
+        //设置请求头为application/json
+        xhr.setRequestHeader('Content-Type','application/json')
+        //把准备的数据转为JSON字符串
+        const userObj = {username:'lizewei111',password:'123456789'}
+        const userStr = JSON.stringify(userObj)
+        //设置回调函数
+        xhr.addEventListener('loadend',()=>{
+            //回调后执行的逻辑
+            console.log(JSON.parse(xhr.responseText));
+        })
+        //发送请求 - 并把要发送的数据携带上
+        xhr.send(userStr)
+    </script>
+</body>
+
+</html>

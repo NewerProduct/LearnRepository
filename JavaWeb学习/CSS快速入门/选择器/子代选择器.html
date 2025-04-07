@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        .container>p {
+            color: blue;
+        }
+
+        .container>ul>li>ul>li.yello {
+            color: yellowgreen;
+        }
+
+        .container>ul {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>Outside the list.</p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3
+                <ul>
+                    <li class="yello">Sub-item 1</li>
+                    <li>Sub-item 2</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Another paragraph outside the list.</p>
+    </div>
+</body>
+
+</html>

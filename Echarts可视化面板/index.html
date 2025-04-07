@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="./css/index.css">
+
+
+
+</head>
+
+<body>
+    <header>
+        <h1>数据可视化</h1>
+        <div class="showTime">当前时间：</div>
+    </header>
+    <!-- 页面主体部分 -->
+    <section class="mainbox">
+        <!-- 左侧布局 -->
+        <div class="column">
+            <div class="panel bar">
+                <!-- 柱形图 -->
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">
+
+                </div>
+                <div class="panel-footer"></div>
+            </div>
+            <!-- 折线图 -->
+            <div class="panel line">
+                <h2>折线图-人员变化</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <!-- 饼形图 -->
+            <div class="panel pie">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+        <div class="column">
+            <!-- 数字模块制作 -->
+            <div class="no">
+                <div class="no-hd">
+                    <ul>
+                        <li>125811</li>
+                        <li>104563</li>
+                    </ul>
+                </div>
+                <div class="no-bd">
+                    <ul>
+                        <li>前端需求人数</li>
+                        <li>市场供应人数</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="map">
+                <div class="chart"></div>
+                <div class="map1"></div>
+                <div class="map2"></div>
+                <div class="map3"></div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="panel bar2">
+                <!-- 柱形图 -->
+                <h2>柱形图-就业行业</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <!-- 折线图 -->
+            <div class="panel line">
+                <h2>折线图-就业行业</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <!-- 饼形图 -->
+            <div class="panel pie">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function getTime() {
+            //清除上一次定时器
+            clearTimeout(t)
+            //格式化时间：格式： 当前时间：2020年3月17-0时54分14秒
+            const date = new Date();
+            //年
+            const Year = date.getFullYear()
+            //月
+            const Mouth = date.getMonth() + 1
+            //日
+            const Day = date.getDate()
+            //时
+            const Hour = date.getHours()
+            //分
+            const Minutes = date.getMinutes()
+            //秒
+            const second = date.getSeconds()
+            const time = `${Year}年${Mouth}月${Day}日-${Hour}时${Minutes}分${second}秒`
+            document.querySelector('header div').innerHTML = `当前时间是：${time}`
+            //继续设置定时器执行
+            t = setTimeout(getTime, 1000);
+        }
+        //开启定时器
+        let t = setTimeout(getTime, 1000);
+
+
+
+    </script>
+    <script src="./node_modules/amfe-flexible/index.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

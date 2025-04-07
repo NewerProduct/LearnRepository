@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用面向对象写模态框.html</title>
+</head>
+
+<body>
+    <button id="delete">删除</button>
+    <button id="login">登录</button>
+    <script>
+        //问题：为什么看着别扭？
+        //因为我们平时写的代码，html结构是直接写在body里面的，选择的时候，直接使用document.querySelector()进行筛选，而这个案例，我们的html结构
+        //不再静态的写在body里面，而是通过构造函数动态的创建出来的，不好理解的地方就在于——当我们写this.modalBox的时候，就相当于我们已经选中了body中的
+        //div结构，因为它是通过document.createElement('div')来创建出来的。这样理解的话，那么代码就很容易看懂了，这样每次通过new Modal()就都会新建一个div元素
+        //而this就指的是新建的实例对象。
+
+
+
+        //把模态框封装成一个对象，每次弹出都new一个模态框对象
+        //模态框有打开和关闭两个操作，因为是公用的，所以我们放在构造函数的原型对象上。
+
+        //1.先写出模态框的构造函数
+        function Modal(title = '', content = '') {
+            //创建div标签
+            this.modalBox = document.createElement('div');
+            //给div标签添加类名
+            this.modalBox.className = 'modal';
+            //填充内部盒子的内容
+            this.modalBox.innerHTML = `
+            <div class="header">${title} <i>x</i></div>
+            <div class="body">${content}</div>
+            `
+        }
+        //给原型对象挂载open方法，用来显示模态框
+        Modal.prototype.open = function () {
+            const box = document.querySelector('.modal')
+
+            box && box.remove()
+
+            document.body.append(this.modalBox)
+
+
+            //由于关闭在打开之后进行，所以把关闭事件绑打开这里
+            //这个用箭头函数：因为需要该this指向 实例对象，如果用普通函数就指向`i`这个元素了
+            this.modalBox.querySelector('i').addEventListener('click', () => {
+                this.close()
+            })
+        }
+        //给原型对象挂载delete方法，用来取消模态框
+        Modal.prototype.close = function () {
+            this.modalBox.remove()
+        }
+        //点击按钮给父元素直接追加，在页面显示
+        document.querySelector('#login').addEventListener('click', function () {
+            //先调用构造函数
+            const login = new Modal('温馨提示', '您正在登录操作');
+            //实例调用open方法
+            login.open();
+
+        })
+
+        //点击按钮给父元素直接取消，在页面消失
+        document.querySelector('#delete').addEventListener('click', function () {
+            //先调用构造函数
+            const del = new Modal('温馨提示', '您点击了删除按钮了');
+            //实例调用open方法
+            del.open();
+
+        })
+    </script>
+</body>
+
+</html>

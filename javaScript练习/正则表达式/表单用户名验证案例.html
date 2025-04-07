@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单用户名验证案例.html</title>
+</head>
+
+<body>
+    <form>
+        请输入你的用户名： <input type="tel" name="username" id="uname">
+        <span></span>
+    </form>
+    <script>
+        //定义规则
+        let reg = /^[a-zA-Z0-9-_]{6,16}$/
+        let input = document.querySelector('#uname');
+        input.addEventListener('blur',()=>{
+            reg.test(input.value) ? alert('用户名正确') :alert('用户名格式有误，请输入由大小写字母组成的6-16位用户名')
+        })
+
+    </script>
+</body>
+
+</html>

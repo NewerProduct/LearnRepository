@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电梯导航案例.html</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .game {
+            width: 100%;
+            height: 400px;
+            border: 2px solid red;
+            margin-top: 10px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .nav {
+            position: relative;
+
+        }
+
+        ul {
+            position: fixed;
+            left: 75%;
+            top: 350px;
+            list-style: none;
+            margin-left: 10px;
+            transition: all 0.5s linear;
+
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .active {
+            color: lightblue;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 侧边导航栏 -->
+    <div class="nav">
+        <ul class="list">
+            <li><a href="javascript:;" data-id="1">游戏1</a></li>
+            <li><a href="javascript:;" data-id="2">游戏2</a></li>
+            <li><a href="javascript:;" data-id="3">游戏3</a></li>
+            <li><a href="javascript:;" data-id="4">游戏4</a></li>
+            <li><a href="javascript:;" data-id="5">游戏5</a></li>
+            <li><a href="javascript:;" id="backTop">点击返回Top</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="game c1">游戏1</div>
+        <div class="game c2">游戏2</div>
+        <div class="game c3">游戏3</div>
+        <div class="game c4">游戏4</div>
+        <div class="game c5">游戏5</div>
+    </div>
+
+
+    <script>
+        (function () {
+            let c2 = document.querySelector('.c2')
+            let ul = document.querySelector('ul')
+            let nav = document.querySelector('.nav')
+            let li = document.querySelector('#backTop')
+            window.addEventListener("scroll", () => {
+                //获得页面被卷去的头部
+                const n = document.documentElement.scrollTop
+                // window.scrollY > c2.offsetTop ?  ul.style.opacity = 1 : ul.style.opacity = 0
+                n >= c2.offsetTop ? ul.style.opacity = 1 : ul.style.opacity = 0
+            })
+            li.addEventListener('click', () => {
+
+                const n = document.documentElement.scrollTop
+                //获取到html元素
+                document.documentElement.scrollTop = 0
+            })
+        })();
+        //第二部分
+        (function () {
+            let list = document.querySelector('.list')
+            list.addEventListener('click', (e) => {
+
+                if (e.target.tagName == "A" && e.target.dataset.id) {
+                    //先获取该类的DOM对象，如果没有返回null，有就返回带有该类的元素
+                    const n = document.querySelector(".list .active")
+                    //排他思想
+                    //先移除
+                    if (n) n.classList.remove("active")
+                    //在添加
+                    e.target.classList.add("active")
+                    //点击跳转制作
+                    console.log(e.target.dataset);
+                    let custom = document.querySelector(`.c${e.target.dataset.id}`)
+                     document.documentElement.scrollTop = custom.offsetTop + 1
+                }
+            })
+
+
+            //根据大盒子来改变小盒子的状态
+            //只要页面以滚动，就移除active类
+            window.addEventListener('scroll', (e) => {
+                //在该函数中e.target是document
+                //先获取该类的DOM对象，如果没有返回null，有就返回带有该类的元素
+                const n = document.querySelector(".list .active")
+                //排他思想
+                //先移除
+                if (n) n.classList.remove("active")
+                //拿到浏览器窗口滑动的距离
+                let top = document.documentElement.scrollTop
+                //选出大盒子
+                let c1 = document.querySelector('.c1')
+                let c2 = document.querySelector('.c2')
+                let c3 = document.querySelector('.c3')
+                let c4 = document.querySelector('.c4')
+                let c5 = document.querySelector('.c5')
+                //选出小盒子
+                let smallBox = document.querySelectorAll('.list li a')
+                console.log(smallBox);
+                //注意下面条件的书写
+                if (c1.offsetTop <= top && top < c2.offsetTop) {
+                    //给第一个小盒子添加高亮
+                    smallBox[0].classList.add('active')
+                } else if (c2.offsetTop <= top && top < c3.offsetTop) {
+                    //给第二个小盒子添加高亮
+                    smallBox[1].classList.add('active')
+                } else if (c3.offsetTop <= top && top < c4.offsetTop) {
+                    //给第三个小盒子添加高亮
+                    smallBox[2].classList.add('active')
+                } else if (c4.offsetTop <= top  && top < c5.offsetTop) {
+                    smallBox[3].classList.add('active')
+                } else {
+                    smallBox[4].classList.add('active')
+                }
+
+
+
+
+
+            })
+
+
+        })();
+    </script>
+</body>
+
+</html>

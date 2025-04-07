@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 相邻兄弟选择器 ,且拥有相同的父元素*/
+        div+p {
+            color: aqua;
+        }
+        /* 一般兄弟选择器 ,且拥有相同的父元素*/
+        div ~ p {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <div>Some div content</div>
+        <p>Paragraph 3</p>
+        <p>Paragraph 4</p>
+      </div>
+    
+</body>
+</html>

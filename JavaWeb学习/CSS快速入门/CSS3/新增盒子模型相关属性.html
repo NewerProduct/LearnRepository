@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增盒子模型相关属性.html</title>
+    <style>
+        .test1 {
+            /* 1.box-sizing属性是CSS3中新增的盒子模型属性
+            content-box是默认值，控制盒子的内容区的宽高
+            border-box指得是控制盒子的总的宽高
+            */
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            border: 5px solid black;
+            background-color: skyblue;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .test2 {
+            /* 2.resize属性，可以让用户来自己拖动盒子改变大小
+            none是默认值，表示不可以
+            horizontal表示可以水平拖动，垂直不行
+            vertical表示可以垂直拖动，水平不行
+            both表示两个方向都可以拖动
+            注意：使用时请配合overflow属性使用，处理内容溢出
+
+            */
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            border: 5px solid black;
+            background-color: skyblue;
+            resize: horizontal;
+            overflow: hidden;
+        }
+        .test3 {
+            /* box-shadow属性
+
+            */
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            border: 5px solid black;
+            background-color: orange;
+            box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.5);
+        }
+        .test4 {
+            /* opacity属性 */
+            margin-top: 10px;
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+            border: 5px solid black;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="test1">测试1</div>
+    <div class="test2">测试2</div>
+    <div class="test3">测试3</div>
+    <div class="test4">测试4</div>
+    <!-- <div class="test5">测试5</div> -->
+</body>
+</html>

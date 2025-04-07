@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获得时间戳的方法.html</title>
+</head>
+<body>
+    <script>
+        const date = new Date();
+        //1.获取时间戳
+        console.log(date.getTime());
+        //2.通过隐式转换，把字符型转换为数字型来获取
+        console.log(+ new Date());
+        //3.获取当前时间的时间戳
+        console.log(Date.now());
+    </script>
+</body>
+</html>

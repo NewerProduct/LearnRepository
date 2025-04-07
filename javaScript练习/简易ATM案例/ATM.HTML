@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM.HTML</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let money = 100;
+    while (true) {
+        let doNumber = +prompt(`请输入您要进行的操作
+        1.取钱
+        2.存钱
+        3.查询余额
+        4.退出
+    `)
+    console.log(doNumber);
+    if (doNumber === 4 ){
+        break;
+    }
+    switch (doNumber) {
+        case 1:
+            let out = +prompt('请输入要取的金额')
+            money -= out
+            alert(`成功取出${out}元`)
+            break
+        case 2:
+        let saveIn = +prompt('请输入存的金额')
+            money += saveIn
+            alert(`成功存入${saveIn}元,您还剩${money}元`)
+            break
+        case 3:
+            alert(`您还剩${money}元`)
+            break
+        default:
+            alert('请你输入正确的数字')
+            break
+    }
+    }
+
+    
+</script>
+</html>

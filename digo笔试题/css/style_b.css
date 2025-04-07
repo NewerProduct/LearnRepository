@@ -1,0 +1,99 @@
+/* 你的css代码 */
+@font-face {
+    font-family: ProductSans;
+    src: url(../font/ProductSans-Bold.ttf);
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../font/Roboto-Regular.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left:16px;
+}
+.box{
+    width: 364px;
+}
+
+.container {
+    width: 768px;
+    height: 100%;
+    margin: 0 auto;
+    overflow:hidden
+
+}
+.container .title {
+    margin-top: 32px;
+    font-family: ProductSans;
+    font-weight: bold;
+    font-size: 18px;
+    color:#333
+}
+.container .box .box-img {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    margin-top: 20px;
+    margin-left: 16px;
+    margin-right: 12px;
+    overflow: hidden;
+}
+.container .box-img img {
+width: 72px;
+height: 72px;
+}
+.box-body{
+    display: flex;
+    position: relative;
+}
+.box-title-text{
+    font-size: 14px;
+    font-family: Roboto;
+    width: 130px;
+    color: #333333;
+    
+}
+.box-body-text{
+    font-size: 14px;
+    font-family: Roboto;
+}
+.box-title-text :nth-child(1){
+    white-space: nowrap;
+}
+.box-title-text div{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 30px;
+    padding-right: 1.5px;
+}
+.box-footer{
+    font-family: Roboto;
+    font-size: 14px;
+    position: absolute;
+    right: -124px;
+    bottom: 35px;
+    margin:0 16px 0 24px
+}
+.box-footer button{
+    width: 88px;
+    height: 32px;
+    background-color: #eef7fe;
+    color:#56b3fa;
+    border-radius: 16px;
+    border: none;
+    font-family: Roboto;    
+}
+.box-body-text span img{
+    width: 10px;
+    height: 10px;
+}
+
+
+

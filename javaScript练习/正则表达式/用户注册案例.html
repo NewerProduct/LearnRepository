@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册案例.html</title>
+</head>
+<style>
+    #yanzhengma {
+        margin-left: 64px;
+    }
+</style>
+
+<body>
+    <div class="form">
+        <form>
+            用户名：<input type="text" name="uname" id="uname" placeholder="请输入用户名"><br>
+            <span id="nameTip"></span> <br>
+            手机号：<input type="text" name="phone" id="phone"><br>
+            <span id="phoneTip"></span> <br>
+            <input type="text" name="yanzhengma" id="yanzhengma"><a id="code" href="#">点击获取验证码</a><br>
+            <span id="YzTip" style="margin-left: 64px;"></span> <br>
+            <input type="password" name="password" id="password" style="margin-left: 64px;"><br>
+            <span id="passwordTip" style="margin-left: 64px;"></span>
+        </form>
+    </div>
+
+
+    <script>
+        //发送验证码后倒计时案例案例
+        //选择a标签
+        let code = document.querySelector('#code');
+        code.addEventListener('click', function () {
+            let i = 5;
+            code.innerHTML = `0${i}秒之后重新获取`
+            let timer = setInterval(() => {
+                i--;
+                code.innerHTML = `0${i}秒之后重新获取`
+                if (i === 0) {
+                    clearInterval(timer)
+                    code.innerHTML = '重新获取'
+                }
+            }, 1000);
+        })
+        //表单验证部分
+        //1.获取用户表单
+        let uname = document.querySelector('[name="uname"]');
+        //2.获取提示的span
+        let span = document.querySelector('#nameTip')
+        //设定监听change事件 - 值发生变化时触发该事件,我们把回调单独封装成一个函数，方便使用
+        uname.addEventListener('change', verifyForm)
+        //封装函数
+        function verifyForm() {
+            let reg = /^[a-zA-Z0-9-_]{6,10}$/
+            if (!reg.test(uname.value)) {
+                span.style.color = 'red'
+                span.style.fontSize = '14px'
+                span.innerText = '输入不合法，请输入6-10位字符'
+                return false;
+            }
+            span.innerText = ''
+            //规则通过就清空
+            return true
+        }
+
+        //验证手机号
+        //1.获取用户手机号
+        const phone = document.querySelector('[name="phone"]');
+        //2.获取提示的span
+        let phoneTip = document.querySelector('#phoneTip')
+        //设定监听change事件 - 值发生变化时触发该事件,我们把回调单独封装成一个函数，方便使用
+        phone.addEventListener('change', verifyPhone)
+        //封装函数
+        function verifyPhone() {
+            let reg = /^(13[0-9]|14[01456789]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+            if (!reg.test(phone.value)) {
+                phoneTip.style.color = 'red'
+                phoneTip.style.fontSize = '14px'
+                phoneTip.innerText = '输入不合法，请输入11位手机号'
+                return false;
+            }
+            phoneTip.innerText = ''
+            //规则通过就清空
+            return true
+        }
+
+
+        //验证码正则校验
+        //1.获取用户输入的验证码
+        const codeInput = document.querySelector('[name="yanzhengma"]');
+        //2.获取提示的span
+        let YzTip = document.querySelector('#YzTip')
+        //设定监听change事件 - 值发生变化时触发该事件,我们把回调单独封装成一个函数，方便使用
+        codeInput.addEventListener('change', verifyYzm)
+        //封装函数
+        function verifyYzm() {
+            let reg = /^\d{6}$/
+            if (!reg.test(codeInput.value)) {
+                YzTip.style.color = 'red'
+                YzTip.style.fontSize = '14px'
+                YzTip.innerText = '输入不合法，请输入6位验证码'
+                return false;
+            }
+            YzTip.innerText = ''
+            //规则通过就清空
+            return true
+        }
+
+        //验证密码
+        //1.获取用户输入的密码
+        const password = document.querySelector('[name="password"]');
+        //2.获取提示的span
+        let passwordTip = document.querySelector('#passwordTip')
+        //设定监听change事件 - 值发生变化时触发该事件,我们把回调单独封装成一个函数，方便使用
+        password.addEventListener('change', verifyPsd)
+        //封装函数
+        function verifyPsd() {
+            let reg = /^\d{6}$/
+            if (!reg.test(password.value)) {
+                passwordTip.style.color = 'red'
+                passwordTip.style.fontSize = '14px'
+                passwordTip.innerText = '输入不合法，请输入6位密码'
+                return false;
+            }
+            passwordTip.innerText = ''
+            //规则通过就清空
+            return true
+        }
+    </script>
+</body>
+
+</html>

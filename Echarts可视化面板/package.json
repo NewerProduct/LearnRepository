@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "echarts": "^5.5.1"
+  }
+}

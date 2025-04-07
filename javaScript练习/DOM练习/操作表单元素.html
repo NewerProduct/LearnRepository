@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作表单元素.html</title>
+</head>
+<body>
+    <input type="text" value="电脑">
+    <input type="checkbox" name="male" id="sex">男
+    <button>禁用这个按钮</button>
+</body>
+<script>
+    let dom = document.querySelector("input")
+    //获取输入框的值
+    console.log(dom.value);
+    //更改type的值
+    console.log(dom.type="password");
+    //更改复选框的状态
+    let input = document.querySelector("#sex")
+    input.checked = true
+    //更改按钮的可用状态
+    let btn = document.querySelector('button')
+    btn.disabled = true
+</script>
+</html>

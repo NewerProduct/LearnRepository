@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS继承</title>
+</head>
+<body>
+    <script>
+        function Coder(){
+            this.type = 'Coder'
+        }
+        Coder.prototype.rap = function(){
+            console.log("123");
+        }
+
+        function Xiaoli(name){
+            this.name = name;
+            this.age = 18;
+        }
+        // Xiaoli类继承Coder类 - 原型链继承
+        Xiaoli.prototype = new Coder();
+        Xiaoli.prototype.constructor = Xiaoli
+
+        const xl = new Xiaoli('小李')
+        console.log(xl.type);
+        xl.rap()
+    </script>
+</body>
+</html>

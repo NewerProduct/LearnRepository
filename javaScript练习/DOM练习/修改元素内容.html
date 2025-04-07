@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素内容.html</title>
+</head>
+<body>
+    <div class="test1">
+        <span>这是修改前的内容</span>
+        <button onclick="changeDom1()">点我修改dom内容</button>
+    </div>
+    <div class="test2" style="margin-top: 10px;">
+        <span>这是修改前的内容</span>
+        <button onclick="changeDom2()">点我修改dom内容</button>
+    </div>
+</body>
+<script>
+ 
+    function changeDom1(){
+        let obj = document.querySelector('.test1')
+        obj.innerHTML = `<span>这是修改后的内容</span>`
+    }
+    
+    function changeDom2(){
+        let obj = document.querySelector('.test2')
+        obj.innerText = "我是innerText，我只能修改文本，并不能识别HTML标签"
+    }
+    
+</script>
+</html>

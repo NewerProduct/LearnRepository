@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点.html</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            没用了
+        </li>
+    </ul>
+    <script>
+        let ul = document.querySelector('ul');
+        //一定要是父元素去删除除，语法：父元素.removeChild(要删除的元素)
+        ul.removeChild(ul.children[0])
+    </script>
+</body>
+
+</html>

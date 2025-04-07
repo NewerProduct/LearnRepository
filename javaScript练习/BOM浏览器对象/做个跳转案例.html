@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>做个跳转案例.html</title>
+</head>
+<body>
+    <a href="https://www.baidu.com">点我跳转百度，如果不点那么<span>5</span>秒后自动跳转</a>
+    <script>
+        
+          let span = document.querySelector('a span');
+          
+        //跳转函数
+        function updateTime(){
+            span.innerText--;
+            if(span.innerText==0){
+                 clearInterval(timer)
+                location.href = "https://www.baidu.com"
+            }
+        }
+      let timer =  setInterval(updateTime,1000)
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* 媒体查询基本语法
+- 通过and表达式来限定应用样式的条件
+- not用来否定一个媒体查询，即当媒体查询不成立时，应用样式。
+- only保证整个媒体查询只在指定的媒体查询类型上有效。
+@media [not | only] [mediatype] [and (expression)]* {
+    CSS-Code;
+}
+*/
+
+@media screen and (min-width:800px) and (max-width:1200px) {
+    body {
+        background-color: skyblue;
+    }
+}
+/* 在打印机上时才有效 */
+@media print and (min-width:800px) and (max-width:1200px) {
+    body {
+        background-color: red;
+    }
+}
+
+/* 在所有设备上均有效 */
+@media all and (min-width:800px) and (max-width:1200px) {
+    body {
+        background-color: skyblue;
+    }
+}

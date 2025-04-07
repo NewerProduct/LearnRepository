@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS实现自适应正方形</title>
+</head>
+<body>
+    <div class="square">
+        <div class="square-content">
+            正方形内容
+        </div>
+    </div>
+</body>
+<style>
+    .square {
+        width: 50%;
+        padding-top: 50%;
+        background-color: lightblue;
+        position: relative;
+    }
+    .square-content {
+    position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+    }
+</style>
+</html>

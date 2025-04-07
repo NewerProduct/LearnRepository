@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环案例.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 案例要求：使用for循环打印99乘法表
+    //外层控制打印的行数
+    for (let i = 1; i <=9; i++) {
+        // 内层控制列数
+        for(let j =1;j<= i;j++){
+            document.write(' ')
+            document.write(`${i} x ${j} = ${i * j}`)
+        }
+        // 非常容易有一个误区，就是for循环的结束条件。循环要一个一个来，保证执行完
+        //该轮循环在进行下一轮循环。
+        document.write('<br/>')
+    }
+</script>
+</html>

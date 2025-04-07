@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "webpack"
+  },
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "name": "dist",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

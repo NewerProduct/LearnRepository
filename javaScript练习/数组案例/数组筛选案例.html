@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组筛选案例.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //要求：将数组[2,0,6,1,77,0,52,0,25,7]中大于等于10的元素选出来，
+    //放入一个新的数组
+    // let oldArr = [2,0,6,1,77,0,52,0,25,7]
+    let oldArr = new Array(2,0,6,1,77,0,52,0,25,7)
+    //创建一个新的数组，来存放筛选后的数值
+    let newArr = new Array();
+
+    //利用for循环对数组进行筛选
+    for (let i = 0; i < oldArr.length; i++) {
+        const element = oldArr[i];
+        if(element >= 10){
+            newArr.push(element)
+        }
+    }
+    console.log(newArr);
+</script>
+</html>

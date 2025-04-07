@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //定义数组
+    var arr1 = new Array(1,2,3,4,5);
+    //或者var arr1 = [1,2,3,4,5]
+
+    //访问元素
+    console.log(arr1[0]);
+    console.log(arr1[1]);
+
+   //特点：长度可变，类型可变
+   var arr = new Array(1,2,3);
+   arr[10] = 50; 
+   console.log(arr[10]);
+
+   arr[9] = "zhangsan";
+   arr[8] = true;
+    console.log(arr);
+
+    //数组的遍历,遍历所有的元素
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        console.log(element);
+    }
+        console.log("=========================");
+    //数组的遍历(foreach):遍历数组中有值的元素
+    arr.forEach(element => {
+        console.log(element);
+        //ES6 箭头函数：(形参列表...) =>{函数体的内容}
+    });
+
+    //push方法：添加元素到数组末尾
+    arr.push("添加测试1","添加测试2")
+    console.log(arr);
+
+    //删除元素splice方法:(从某个索引位置开始删除,删除元素的个数)
+    arr.splice(11,2)
+
+</script>
+</html>

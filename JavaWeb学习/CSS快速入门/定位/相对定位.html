@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相对定位</title>
+    <style>
+        .outer {
+            width: 500px;
+            background-color: skyblue;
+            border: 1px solid black;
+        }
+        .test {
+            width: 200px;
+            height: 200px;
+        }
+        .test1 {
+            background-color:  grey;
+        }
+        .test2 {
+            background-color: orange;
+            /* 开启相对定位(相对指的是相对于该元素原来的位置) */
+            position: relative;
+            /* 指定定位的参数 top right bottom right*/
+            left: 100px;
+        }
+        .test3 {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="test test1">测试1</div>
+        <div class="test test2">测试2</div>
+        <div class="test test3">测试3</div>
+       
+    </div>
+  
+</body>
+</html>

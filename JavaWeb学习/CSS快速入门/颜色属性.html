@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>颜色</title>
+    <style>
+        /* RGBA写法带透明度 */
+        .test1{
+            color: rgba(123, 211, 234, 1);
+        }
+        /* RGB不带透明度 */
+        .test2{
+            color:  rgb(52, 52, 189)
+        }
+        /* 十六进制HEX 下面这种写法不带透明度*/
+        .test3{
+            color: #ff0000;
+        }
+        .test4{
+            color: #00ff00;
+        }
+        /* 十六进制HEXA 下面这种写法带透明度*/
+        .test5{
+            color: #0000ff09;
+        }
+        /* hsl写法 */
+        .test6{
+            color: hsl(0, 100%, 50%);
+        }
+        .test7{
+            color: hsl(300deg, 100%, 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="test1">测试1</div>
+    <div class="test2">测试2</div>
+    <div class="test3">测试3</div>
+    <div class="test4">测试4</div>
+    <div class="test5">测试5</div>
+    <div class="test6">测试6</div>
+    <div class="test7">测试7</div>
+</body>
+</html>

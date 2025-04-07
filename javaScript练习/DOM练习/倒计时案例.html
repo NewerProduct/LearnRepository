@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时案例.html</title>
+</head>
+<style>
+    .backTime {
+        width: 400px;
+        height: 400px;
+        background-color: rgb(202, 54, 28);
+        margin: 0 auto;
+
+    }
+
+    .backTime p {
+        text-align: center;
+        color: white;
+    }
+
+    .timeArea {
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .time {
+        width: 80px;
+        height: 80px;
+        background-color: black;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        line-height: 80px;
+        font-size: 40px;
+    }
+
+    span {
+        display: inline-block;
+        text-align: center;
+        height: 80px;
+        line-height: 65px;
+        font-size: 50px;
+        color: white;
+    }
+
+    .footer {
+        margin-top: 80px;
+        font-size: 50px;
+    }
+</style>
+
+<body>
+
+    <body>
+        <div class="backTime">
+            <p></p>
+            <p>距离今年过年还有</p>
+            <div class="timeArea">
+                <div class="hours time">00</div>
+                <span>:</span>
+                <div class="minutes time">00</div>
+                <span>:</span>
+                <div class="seconds time">00</div>
+            </div>
+            <p class="footer">新年快乐</p>
+        </div>
+        <script>
+            // 假设过年的时间是2025年1月1日
+            const overTime = new Date(2025, 0, 1, 0, 0, 0);
+            const nowTime = new Date();
+
+
+            // 分别获取两个时间的时间戳
+
+            let endTime = overTime.getTime();
+
+
+            // 更新时间的函数
+            function updateTime() {
+                // 获取当前时间
+                const nowTime = new Date();
+                let startTime = nowTime.getTime();
+
+                // 计算剩余时间
+                let temp = endTime - startTime;
+
+                // 如果已经过了结束时间，则停止定时器
+                if (temp <= 0) {
+                    clearInterval(djs);
+                    return;
+                }
+
+                // 把算出的时间戳转换为时分秒的形式
+                let h = Math.floor((temp / 1000 / 60 / 60) % 24);
+                let m = Math.floor((temp / 1000 / 60) % 60);
+                let s = Math.floor((temp / 1000) % 60);
+
+                // 补零
+                h = h < 10 ? '0' + h : h;
+                m = m < 10 ? '0' + m : m;
+                s = s < 10 ? '0' + s : s;
+
+                // 更新界面
+                let hours = document.querySelector('.hours');
+                let minutes = document.querySelector('.minutes');
+                let seconds = document.querySelector('.seconds');
+
+                hours.innerText = h;
+                minutes.innerText = m;
+                seconds.innerText = s;
+            }
+
+            // 开启倒计时
+            let djs = setInterval(updateTime, 1000);
+
+            // 显示今天的日期
+            let p = document.querySelector('.backTime p:nth-child(1)');
+            p.innerHTML = `今天是${nowTime.toLocaleDateString()}`;
+        </script>
+    </body>
+</body>
+
+</html>

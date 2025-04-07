@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增就业信息案例.html</title>
+    <style>
+        .outer {
+            width: 90%;
+            border: 1px solid red;
+            border-radius: 10px;
+            margin: 0 auto;
+            height: 800px;
+            padding: 20px;
+        }
+
+        #btn1 {
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .table {
+            width: 90%;
+            background-color: skyblue;
+            border: 1px solid red;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        th,
+        td,
+        tr {
+            border: 2px solid black;
+        }
+
+        .form {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <h2>新增学生</h2>
+            <div class="form">
+                <form id="form1">
+                    姓名：<input type="text" name="username" id="username">
+                    年龄：<input type="text" name="age" id="age">
+                    性别：<select name="sex" id="sex">
+                        <option value="男性">男性</option>
+                        <option value="女性">女性</option>
+                    </select>
+                    薪资：<input type="text" name="salary" id="salary">
+                    就业城市：<select name="city" id="city">
+                        <option value="beijing">北京</option>
+                        <option value="caoxian">曹县</option>
+                        <option value="shanghai">上海</option>
+                        <option value="tianjin">天津</option>
+                    </select>
+                    <button type="button" id="submit">提交信息</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="container">
+            <!-- 在这里渲染dom表格，点击提交按钮，渲染一次 -->
+            <table class="table">
+                <thead>
+                    <h3>就业榜</h3>
+                </thead>
+                <tbody class="tbody">
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>薪资</th>
+                    <th>就业城市</th>
+                    <th>操作</th>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let btn = document.querySelector('#submit');
+        let username = document.querySelector('#username');
+        let age = document.querySelector('#age');
+        let sex = document.querySelector('#sex');
+        let salary = document.querySelector('#salary');
+        let city = document.querySelector('#city');
+        let tbody = document.querySelector('.tbody');
+        let form = document.querySelector('#form1')
+        let dataObj = [username, age, sex, salary, city]
+
+
+        //思路：对数组进行操作
+        let infoArr = [];
+        btn.addEventListener('click', (e) => {
+            //注意这里了。我们每次一定要重新生成一个新的列，如果多次使用旧列，只会添加一次！！！
+            let newTr = document.createElement('tr');
+            tbody.appendChild(newTr);
+            if (username.value != '' && age.value != '' && salary.value != '') {
+                //定义一个对象，将对象存入数组
+                let obj = {
+                    uname: dataObj[0].value,
+                    age: dataObj[1].value,
+                    sex: dataObj[2].value,
+                    salary: dataObj[3].value,
+                    city: dataObj[4].value
+                }
+                infoArr.push(obj);
+                render();
+                form.reset();
+
+                console.log(infoArr);
+
+                //添加表单验证
+            }
+            else {
+                alert('您的信息不完整，请写完整')
+            }
+        })
+        //数据渲染函数
+        function render() {
+            let tr = document.querySelector('.tbody tr:last-child')
+            console.log("这是函数里面的", infoArr);
+            for (let i = 0; i < infoArr.length; i++) {
+                tr.innerHTML = `<td>${infoArr[i].uname}</td>
+         <td>${infoArr[i].age}</td>
+         <td>${infoArr[i].sex}</td>
+         <td>${infoArr[i].salary}</td>
+         <td>${infoArr[i].city}</td>
+         <td><a href="javascript:;" data-index="${i}">删除</a></td>
+         `
+            }
+        }
+        //利用事件委托来写删除
+        tbody.addEventListener('click', (e) => {
+            if (e.target.tagName == 'A') {
+                //我们自定义的属性：利用属性选择器选择到对应要删除的行
+                let tr = document.querySelector(`[data-index="${e.target.dataset.index}"]`)
+                console.log(tr.parentNode.parentNode);
+                //找到他的父节点，也就是这一整行 ：tr1.parentNode.parentNode，因为是tr包着td，td又包着里面的a标签
+                //所以.两次父节点就能找到tr，那就找到了这一整行
+                //同时清空对应数组
+                infoArr.splice(e.target.dataset.index, 1)
+                //根据tr的父亲，tbody去删除tr，也就达到了删除该行的效果。
+                tbody.removeChild(tr.parentNode.parentNode)
+                //在次渲染
+                render();
+            }
+        })
+
+    </script>
+</body>
+
+</html>

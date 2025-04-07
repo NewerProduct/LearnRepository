@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>克隆节点.html</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        //需求：我们克隆一份li节点，放在第三个li的后面
+        let li = document.querySelector('li:nth-child(1)')
+        //对li进行克隆
+       let cloneElement = li.cloneNode(true);
+       console.log(cloneElement);
+       //把新克隆的节点放在第三个li后面
+       li.parentElement.appendChild(cloneElement);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例-给数组拓展方法.html</title>
+</head>
+<body>
+    <script>
+        //自己定义数组拓展方法 - 求和 和 最大值
+        //1.定义的方法，任何数组都可以使用，所以定义在数组的原型对象上
+
+        //求最大值
+        const arr = [1,2,3]
+        Array.prototype.max = function() {
+            //this在这里指向实例对象，也就是arr
+            return Math.max(...this)
+        }
+
+        console.log(arr.max());//3
+
+        //求和
+        Array.prototype.sum = function(){
+            //this在这里指向实例对象，也就是arr
+          return  this.reduce(function(prev,current){
+                return prev + current
+            },0)
+        }
+        //调用
+       console.log(arr.sum());  //6
+    </script>
+</body>
+</html>

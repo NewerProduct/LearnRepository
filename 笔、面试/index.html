@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 延迟加载一个脚本通常使用下面的这几种方法 -->
+    <!-- 1.使用defer -->
+    <script src="./example1.js" defer></script>
+    <!-- 2.使用async属性 -->
+    <script src="./example2.js" async></script>
+</head>
+
+<body>
+    <script>
+        //map 有三个参数 value,index,arr本身
+        //parseInt 接收两个参数 value,index
+        const result = ["2", "3", "4"].map(parseInt)
+        console.log(result);
+        console.log(parseInt("2", 0));
+        console.log(parseInt("3", 1));
+        console.log(parseInt("4", 2));
+        console.log(5 / 2);
+        console.log(5 % 2);
+
+
+        //生成一个0 - x 的随机数 ===> Math.floor(Math.random() * (x + 1) )
+        console.log(Math.floor(Math.random() * 6));  // 0 - 5 
+
+        //生成一个a，b之间的随机数 ====> Math.floor(Math.random() * (b - a + 1) + a)
+        console.log(Math.floor(Math.random() * (10 - 2 + 1) + 2)); //生成 2 ~ 10
+        console.log(String.fromCharCode(100));
+        console.log("---------------------------------------------------------");
+        //对象转为字符串会显示[object,object]
+        let obj = {
+            name: "lizewei",
+            age: 24
+        }
+        console.log(String(obj));
+        //数组对象转为字符串
+        const arr = [1, 2, 3];
+        console.log(arr.toString()); //"1,2,3"
+        console.log("---------------------------------------------------------");
+        //其他类型转数字类型
+        const chars1 = "Lizewei"
+        console.log(Number(chars1)); //NaN
+        const chars2 = "123Lizewei"
+        console.log(Number(chars2)); //NaN
+        const chars3 = "123"
+        console.log(Number(chars3)); //123
+        const chars4 = " "
+        console.log(Number(chars4)); //123
+        //布尔类型转数组 true --- 1 false ---0
+        const test1 = true
+        console.log(Number(test1)); //1
+        const test2 = false
+        console.log(Number(test2)); //0
+        //null 和undefined转数字 null --- 0 undefined --- NaN
+        console.log(Number(null)); //0
+        console.log(Number(undefined)); //NaN
+        // Symbol类型转数字型
+        let test3 = Symbol("1")
+        // console.log(Number(test3)); TypeError: Cannot convert a Symbol value to a number
+
+        /*
+        对象到数字的转换：首先会尝试吧对象转为基本类型的值，内部会检查该对象是否有valueOf()方法
+        1.有该方法且该方法返回基本类型的值，则使用该方法进行转换，
+        2.没有或有但是返回值不是基本类型的值，则使用toString()方法的返回值进行转换
+        3.如果valueOf和toString方法均不返回基本类型，则报错
+        */
+        let obj1 = {
+            valueOf() {
+                return 42;
+            }
+        };
+        console.log(Number(obj1)); // 42
+
+        let obj2 = {
+            toString() {
+                return "3.14";
+            }
+        };
+        console.log(Number(obj2)); // 3.14
+
+        let obj3 = {
+            valueOf() {
+                return {};
+            },
+            toString() {
+                return {};
+            }
+        };
+        // console.log(Number(obj3)); // TypeError: Cannot convert object to primitive value
+
+        /*
+        数组通常会先被转为字符串，然后按照字符串的规则进行转换
+        */
+        console.log(Number([1, 2, 3]));  // NaN
+        console.log(Number([42]));       // 42
+        console.log(Number([]));         // 0
+        console.log(Number(["3.14"]));   // 3.14
+        console.log("---------------------------------------------------------");
+        //其他类型值转布尔值 - 只有一下特定的一些值转布尔是false，其他情况全是true
+        console.log(Boolean(undefined)); // false
+        console.log(Boolean(null));      // false
+        console.log(Boolean(false));     // false
+        console.log(Boolean(0));         // false
+        console.log(Boolean(-0));        // false
+        console.log(Boolean(NaN));       // false
+        console.log(Boolean(""));        // false
+
+        console.log("---------------------------------------------------------");
+        //创建一个bigInt类型 - 1.使用以n结尾的 2.使用BigInt构造函数来创建
+        let bigNum = 12345198897890123n;
+        let bigNum2 = BigInt(4123123128980890709);
+        console.log(bigNum); //12345198897890123n
+        console.log(bigNum2); //4123123128980890624n
+
+        //判断数据的类型 typeOf 和 Object.prototype.toString.call(42)既可以判断原始数据类型也可以判断对象数据类型
+        console.log(typeof 42);
+        console.log(Object.prototype.toString.call(42));
+        //判断是否是数组
+        let arr2 = []
+        console.log(Array.isArray(arr2)); //true
+        console.log(arr2 instanceof Array); //true
+        console.log(Object.prototype.toString.call(arr2)); // [Object Array]
+        console.log("---------------------------------------------------------");
+        //3.动态的创建脚本元素
+        let script = document.createElement('script')
+        script.src = "./example3.js"
+        document.head.appendChild(script)
+        //4.使用模块化加载 详细查看：https://www.mianshiya.com/bank/1810644471159848962/question/1810886888777654274
+        console.log("---------------------------------------------------------");
+        //将一个伪数组转换为真数组
+        let likeArr = {0:'a',1:'b',length:2};
+        //1.使用Array.prototype.slice.call()
+        console.log(Array.prototype.slice.call(likeArr));
+        //2.使用ES6新引入的方法Array.from()
+        console.log(Array.from(likeArr));
+        
+    </script>
+
+</body>
+
+</html>

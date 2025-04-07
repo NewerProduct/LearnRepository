@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串对象.html</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let str = "LiZEWEIIE";
+    let str2 = "LI,ZE,WEI"
+    //返回字符串长度(注意空格也算长度)
+    console.log(str.length);
+    //indexOf() 方法返回字符串中指定文本首次出现的索引（位置）：
+    console.log(str.indexOf("L"));
+    //lastIndexOf() 方法返回指定文本在字符串中最后一次出现的索引：
+    //可以指定检索的起始位置,如果给出起始位置，则查找的是从起始位置
+    //往前出现的最后位置
+    console.log(str.lastIndexOf("E"));
+    console.log(str.lastIndexOf("E",6)); //5
+    //search() 方法搜索特定值的字符串，并返回匹配的位置：
+    console.log(str.search("E")); //3
+    //slice() 提取字符串的某个部分并在新字符串中返回被提取的部分。
+    //该方法是两个参数，第一个参数是开始索引，第二个是终止索引，不包括终止索引位置处的字符
+    console.log(str.slice(0,3)); //LIZ
+    console.log(str.slice(0,-7)); // LI 
+    console.log(str.slice(1)); //iZEWEIIIE
+    console.log(str.slice(-1));// E
+    //substring() 类似于 slice()。不同之处在于 substring() 无法接受负的索引。
+    console.log(str.substring(1)); //iZEWEIIE
+    console.log(str.substring(0,1));// L
+    //`substr()` 类似于 `slice()`，不同之处在于第二个参数规定被提取部分的*长度*：
+    console.log(str.substr(1)); //iZEWEIIE
+    console.log(str.substr(1,5));//iZEWE
+    console.log(str.substr(-2));//IE
+    //replace() 方法用另一个值替换在字符串中指定的值：
+    console.log(str.replace("E","F")); //LiZFWEIIE
+    //charAt() 方法返回字符串中指定下标（位置）的字符串：
+    console.log("测试"+str.charAt(0));//L
+    //charCodeAt() 方法返回字符串中指定索引的字符 unicode 编码：
+    console.log(str.charCodeAt(0));// H-->编码是76，所以该函数返回76
+    //可以通过 split() 将字符串转换为数组
+    console.log(str2.split()); //['LI,ZE,WEI']
+    console.log(str2.split("")); //['L', 'I', ',', 'Z', 'E', ',', 'W', 'E', 'I']
+    console.log(str2.split(","));//['LI', 'ZE', 'WEI']
+    //match() 方法根据正则表达式在字符串中搜索匹配项，并将匹配项作为 **Array 对象**返回。
+    console.log(str.match(/E/g));//['E', 'E', 'E']
+    console.log(str.match(/E/));//['E']
+    //如果字符串包含指定值，`includes()` 方法返回 true。
+    console.log(str.includes("E"));//true
+    console.log(str.includes("E",-1));//true
+    //检测是否以给定的字符串开头
+    console.log(str.startsWith('L')); //true
+
+</script>
+</html>

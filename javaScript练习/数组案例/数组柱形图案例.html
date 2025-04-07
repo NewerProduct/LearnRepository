@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组柱形图案例.html</title>
+    <style>
+        .outer {
+            height: 400px;
+            width: 600px;
+            display: flex;
+            margin: 0 auto;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            margin-top: 200px;
+
+        }
+
+        .box {
+            width: 70px;
+            background-color: pink;
+        }
+        .box div{
+            text-align: center;
+            margin-top: -18px;
+        }
+
+        .footer {
+            width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    
+        <div class="outer">
+            <div class="season1 box">
+                <div></div>
+            </div>
+            <div class="season2 box">
+                <div></div>
+            </div>
+            <div class="season3 box">
+                <div></div>
+            </div>
+            <div class="season4 box">
+                <div></div>
+            </div>
+        </div>
+        <div class="footer">
+            <div>第一季度</div>
+            <div>第二季度</div>
+            <div>第三季度</div>
+            <div>第四季度</div>
+        </div>
+ 
+
+</body>
+<script>
+    //思路：创建两个数组，一个数组用来装所有的盒子元素，另一个数组用来装用户的输入，然后用循环让其进行对应
+    //并通过JS操作DOM来控制内容属性，向其添加输入的像素值即可，特别注意，操作样式的时候要加单位！！！
+    let season = document.querySelectorAll('.box')
+    console.log(season);
+        let dataArr = new Array()
+        let j = 1
+        while(j <= 4){
+            let data = prompt(`请你输入要生成的柱形图高度`)
+            j++;
+            dataArr.push(data)
+        }
+    console.log(dataArr);
+    
+    for(let i = 0 ; i < dataArr.length;i++){
+                   season[i].style.height = `${dataArr[i]}px`
+                   season[i].childNodes[1].innerHTML = `${dataArr[i]}`
+    }
+
+</script>
+
+</html>

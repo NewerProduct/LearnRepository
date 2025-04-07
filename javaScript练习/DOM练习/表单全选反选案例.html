@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单全选反选案例.html</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>人员统计表</thead>
+        <tbody>
+            <th><input type="checkbox" name="all" id="input1"></th>
+            <th>性别</th>
+            <th>姓名</th>
+            <th>是否抽烟</th>
+            <tr>
+                <td></td>
+                <td>男</td>
+                <td>小红</td>
+                <td><input type="checkbox" name="row1" id="isSomke"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>女</td>
+                <td>小爱</td>
+                <td><input type="checkbox" name="row2" id="isSomke"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>男</td>
+                <td>小四</td>
+                <td><input type="checkbox" name="row3" id="isSomke"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let length = 0;
+        let input1 = document.querySelector("#input1")
+        let allChecked = document.querySelectorAll("#isSomke")
+        //通过外层控制里层
+        input1.addEventListener("click", function () {
+            if (input1.checked == true) {
+                length = 3;
+                allChecked.forEach((element)=>{
+                    element.checked = true
+                })
+            }
+            if(input1.checked == false){
+                length = 0;
+                allChecked.forEach((element)=>{
+                    element.checked = false
+                })
+            }
+        })
+        //通过里面层控制外面
+        for (let i = 0; i < allChecked.length; i++) {
+                allChecked[i].addEventListener("click", () => {
+                    if(allChecked[i].checked == true){
+                        length++;
+                        console.log(length);
+                    }
+                    if(allChecked[i].checked==false){
+                        length--;
+                        console.log(length);
+                    }
+                    if(length==3){
+                        input1.checked = true;
+                    }
+                    if(length <3){
+                        input1.checked =false
+                    }
+                })
+
+            }
+    </script>
+</body>
+
+</html>

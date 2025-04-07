@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>焦点案例.html</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    #xiaomi {
+        width: 200px;
+        border-radius: 15px;
+        
+    }
+</style>
+<body>
+    <div class="mi">
+        <select name="shopList" id="xiaomi">
+            <option value="begin">请选择手机型号</option>
+            <option value="xiaomi11">小米11</option>
+            <option value="xiaomi12">小米12</option>
+            <option value="xiaomi13">小米13</option>
+            <option value="xiaomi14">小米14</option>
+            <option value="xiaomi15">小米15</option>
+            <option value="xiaomi16">小米16</option>
+        </select>
+    </div>
+</body>
+<script>
+    let option = document.querySelector("#xiaomi")
+    console.log(option);
+    option.addEventListener('focus',()=>{
+        alert("select选择框获得了焦点")
+    })
+    
+        
+    
+
+</script>
+</html>

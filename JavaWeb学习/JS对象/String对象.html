@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //String对象
+    //方式一：
+    // var stringTest = new String("zhangsan");
+    //方式二：
+    var stringTest1 ="  Hello World  ";
+    //获取字符串长度
+    console.log(stringTest1.length);
+
+    //chAt方法,返回指定位置的字符
+    console.log(stringTest1.charAt(2));//H
+
+    //indexOf方法，查询对应字符的索引
+    console.log(stringTest1.indexOf("H")); //2
+
+    //trim方法(去除空格)
+    var newString = stringTest1.trim();
+    console.log(newString);
+
+    //substring方法，截取字符串，(前闭后开)输入两个值，开始索引和结束索引
+    //这里演示截取去除空格后的字符串，将Hello截取出来
+   console.log(newString.substring(0,5));//Hello
+</script>
+</html>

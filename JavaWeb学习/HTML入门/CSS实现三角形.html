@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS实现三角形</title>
+</head>
+
+<body>
+    <div class="triangle">
+
+    </div>
+</body>
+<style>
+    /* 使用css实现三角形的关键是调整元素的border属性，当元素的宽和高都为0时
+    通过设置不同方向border颜色和宽度来达到目的 */
+    .triangle{
+        width: 0;
+        height: 0;
+        border-bottom: 50px solid transparent;
+        border-right: 50px solid red;
+        border-top: 50px solid transparent;
+    }
+</style>
+
+</html>

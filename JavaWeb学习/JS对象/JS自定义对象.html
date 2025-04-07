@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS自定义对象</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //自定义对象
+    var user = 
+    {
+        name: "小李",
+        age:25,
+        gender:"男性",
+        //方法可以这样定义
+        eat:function()
+        {
+            alert("用膳....")
+        },
+        //也可以这样定义
+        eat1(){
+            alert("用膳....")
+        }
+    }
+    //属性的调用：对象名.属性名,方法的调用：对象名.方法名
+    console.log(user.name);
+    console.log(user.age);
+    console.log(user.gender);
+    user.eat();
+    user.eat1();
+
+    //定义json
+    var jsonStr = '{"name" = "小李","age" = 25, "address" = "北京" }';
+
+    //JSON字符串转为JS对象——JSON.parse()方法
+    var jsonStrObject = JSON.parse(jsonStr);
+    console.log(jsonStrObject);
+    //JS对象转为JS字符串——JSON.stringify()方法
+    var  jsObject = JSON.stringify(jsonStrObject);
+    console.log(jsObject);
+</script>
+</html>

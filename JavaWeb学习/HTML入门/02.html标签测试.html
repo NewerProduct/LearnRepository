@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- head标签是html的头部标签，在该标签中，规定了一些html的信息，比如meta元标签的内容，以及该页面的title等等
+    此外，在该标签中，还可以通过link标签引入样式和定义页面图标，使用style标签来写页面样式，使用script标签来引入脚本
+    其中，meta标签和title标签是必不可少的
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.html标签测试.html</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1>你好</h1>
+    <iframe src="" frameborder="0"></iframe>
+    <form>
+        <!-- label标签可以通过for传入表单控件的ID来将表单控件的和label标签关联起来 -->
+        <label for="username">用户名</label>
+        <input type="text" value="username" id="username">
+        <input type="file" value="fileName" multiple>
+    </form>
+    <hr>
+    <!-- i、em都是控制倾斜标签的，而strong和b都是控制加粗标签，但em和strong除了有视图层的效果外，还有强调的作用 -->
+    <i>i标签只是起到了一个倾斜的作用</i>
+    <hr>
+    <em>em标签除了有倾斜作用，并带有强调色彩</em>
+    <hr>
+    <b style="visibility: hidden;">这是b标签：只是起到了一个加粗的作用</b><br>
+    <b style="display: none;">这是b标签：只是起到了一个加粗的作用</b>
+    <hr>
+    <strong>这是strong标签：加粗，并带有强调的意味</strong>
+    <!-- <canvas id="test" width="300px" height="300px" style="background-color: skyblue;"></canvas> -->
+    <hr>
+    <article>
+        总结，HTML4和HTML5有那些区别呢？
+        回答时，我们应该怎么回答这个问题？
+        H5相比较与H4来说，引入了很多新的内容，比如音、视频标签video，audio
+        更加的语义化，比如article、section、main、header、nav、footer等等，还有一些表单输入框的类型，比如date，email等等
+        其实说白了，这个题的答案建议从H5新特性入手回答比较有思路
+    </article>
+    <!-- 处理文本溢出 overflow: hidden;会对文字进行截断，也就是溢出部分隐藏 -->
+    <p style="overflow-x:hidden;">
+        asdddddddasdasdasdasdasokdjoiuqwoireqwoijndoinqoiwdnoqiwjdioqwjdoijodoiasjdoiajsiodajsoidjasoidjasoidjasoidjoiasdjoiasjdoidjoisajdoiasjdoiasjdasiodjaosijdodasjoidjasoijddjsaodjasoid
+    </p>
+    <!-- 处理文本溢出 white-space: nowrap;白空间不换行 -->
+    <p style="white-space: nowrap;">
+        asdddddddasdasdasdasdasokdjoiuqwoireqwoijndoinqoiwdnoqiwjdioqwjdoijodoiasjdoiajsiodajsoidjasoidjasoidjasoidjoiasdjoiasjdoidjoisajdoiasjdoiasjdasiodjaosijdodasjoidjasoijddjsaodjasoid
+    </p>
+    <!-- 处理文本溢出 text-overflow: ellipsis 溢出文本用...省略号表示但是注意要与overflow: hidden;一起使用 -->
+    <p style=" overflow: hidden; text-overflow: ellipsis;">
+        asdddddddasdasdasdasdasokdjoiuqwoireqwoijndoinqoiwdnoqiwjdioqwjdoijodoiasjdoiajsiodajsoidjasoidjasoidjasoidjoiasdjoiasjdoidjoisajdoiasjdoiasjdasiodjaosijdodasjoidjasoijddjsaodjasoid
+    </p>
+
+    <p>transform有哪些属性？
+        2D/3D
+        2d:旋转rotate，位移translate，缩放scale，skew扭曲
+    </p>
+
+    <p>在进行布局时，我们遇到的单位分为绝对单位和相对单位
+        绝对单位：px
+        相对单位：em(相对父元素)，rem(相对根元素)，%(相对父元素)，vw(相对视口1vw = 1%)
+    </p>
+    <hr>
+    <!-- 下面来实现一个两栏布局 -->
+    <div>
+        <h2>两栏布局第一种实现左侧使用float，右侧使用margin-left以百分比作为单位</h2>
+        <div class="leftE" style="float: left;">这是左边</div>
+        <div class="rightE" style="margin-left: 70%;">这是右边</div>
+    </div>
+
+    <!-- 下面来实现一个两栏布局 -->
+    <div>
+        <h2>两栏布局第二种实现使用flex布局</h2>
+        <div style="display: flex;">
+            <div class="leftE">这是左边</div>
+            <div class="rightE">这是右边</div>
+        </div>
+    </div>
+    <hr>
+    <h2>如何实现三栏布局</h2>
+    <div class="container">
+        <div class="left">Left</div>
+        <div class="center">Center</div>
+        <div class="right">Right</div>
+    </div>
+    <hr>
+    <h2>实现元素水平居中的几种方式</h2>
+    <div class="testElement" style="background-color: skyblue; width: 200px;">
+        测试元素
+    </div>
+</body>
+<style>
+    .leftE{
+        flex: 7;
+    }
+    .rightE{
+        flex: 3;
+    }
+    .container {
+    overflow: hidden;
+}
+.left, .right {
+    width: 200px;
+    float: left;
+}
+.right {
+    float: right;
+}
+.center {
+    margin: 0 200px;
+}
+.testElement {
+    margin: 0 auto;
+}
+</style>
+</html>

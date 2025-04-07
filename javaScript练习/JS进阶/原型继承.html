@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型继承.html</title>
+</head>
+
+<body>
+    <script>
+        //被继承的构造函数
+        function Parent() {
+            this.message = 'Hello from Parent';
+        }
+
+        Parent.prototype.showMessage = function () {
+            console.log(this.message);
+        };
+
+        //要进行继承的构造函数
+        function Child() {
+            this.message = 'Hello from Child';
+        }
+
+        // 设置 Child 的 prototype 为 Parent 的实例
+        //如果不使用构造函数来进行继承，而是使用了Parent（写成了Child.prototype =  Parent），则会导致给child单独添加的方法被共享，这样会出现问题。
+        Child.prototype = new Parent();
+
+        // 修正 constructor 指向 Child
+        Child.prototype.constructor = Child;
+
+        let childInstance = new Child();
+        childInstance.showMessage(); // 输出 "Hello from Parent"
+    </script>
+</body>
+
+</html>

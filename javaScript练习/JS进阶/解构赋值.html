@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值.html</title>
+</head>
+<body>
+    <script>
+        const arr = [100,3,2];
+        //使用数组解构 - 会把数组中的值，按照声明变量的顺序依次赋值,相当于
+        // a = 100,b=3,c=2
+        const [a,b,c] = arr;
+        console.log(a,b,c);
+
+        //使用解构来进行变量交换
+        let d = 1;
+        let e = 2;
+        [e,d] = [d,e];
+        console.log("e:",e,"d:",d); //e:1,d:2
+
+        //数组解构小练习
+        //1
+        const pc = ['海尔','联想','小米','方正'];
+        //解构赋值
+        const [hr,lx,xm,fz] = pc;
+        console.log('hr',hr,'lx',lx);
+
+        //2
+        function getValue(){
+            return [100,60]
+        }
+        //结构赋值
+        const [max,min] = getValue();
+        console.log('max',max,'min',min);
+
+
+    </script>
+</body>
+</html>

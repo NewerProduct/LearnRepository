@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图案例.html</title>
+    <style>
+        .slider-indicator {
+            display: flex;
+            width: 70px;
+            justify-content: space-evenly;
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+            margin-left: 8px;
+        }
+        .slider {
+            width: 516px;
+            background-color: gray;
+        }
+        .slider-indicator li {
+            list-style: disc;
+            color: white;
+            
+        }
+        .active {
+            transform: scale(1.5)
+            
+        }
+    </style>
+</head>
+
+<body>
+ <div class="slider">
+    <div class="slider-wrapper">
+        <img src="../images/cat1.png" alt="">
+    </div>
+    <div class="slider-footer">
+        <p></p>
+        <ul class="slider-indicator">
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+ </div>
+</body>
+<script>
+    
+    let random = Math.floor(Math.random() * 2 )
+    console.log(random);
+    //准备数据
+    let imgData = [
+        {
+            url:"../images/cat1.png",title:"这是一只猫1",color:"red"
+        },
+        {
+            url:"../images/cat2.png",title:"这是一只猫2",color:"pink"
+        },
+        ]
+        //修改图片url
+    document.querySelector(".slider-wrapper img").src = `${imgData[random].url}`
+    //修改P标签内容
+    document.querySelector('.slider-footer p').innerText=`${imgData[random].title}`
+    //修改背景颜色
+    document.querySelector('.slider-footer').style.backgroundColor = imgData[random].color
+    //获取小圆点
+    document.querySelector(`.slider-indicator li:nth-child(${random+1})`).classList.add("active")
+</script>
+
+</html>

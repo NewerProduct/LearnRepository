@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转换时间案例.html</title>
+</head>
+<body>
+    <div class="test">
+
+    </div>
+</body>
+<script>
+    let hours;
+    let minutes
+    let second
+    let seconds = prompt("请输入要转换的秒数：")
+    if(seconds >= 3600){
+         hours = parseInt(seconds / 3600) 
+    }else{
+        hours = 0
+        console.log(hours);
+    }
+    if((seconds -(hours * 3600)>60)){
+         minutes = parseInt((seconds -(hours * 3600)) / 60)
+    }else{
+        minutes = 0
+        console.log(minutes);
+    }
+    second = seconds - (hours * 3600) - (minutes * 60);
+    let time = document.querySelector('.test')
+    time.innerHTML = `${seconds}秒经过转换是${hours}小时 ${minutes}分钟
+    ${second}秒。`
+</script>
+</html>

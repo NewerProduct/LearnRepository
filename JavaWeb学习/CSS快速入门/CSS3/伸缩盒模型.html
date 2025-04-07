@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩盒模型.html</title>
+    <style>
+        .outer {
+            /* 开启伸缩盒模型 */
+            display: flex;
+            width: 1000px;
+            height: 900px;
+            border: 1px solid gray;
+            background-color: #888;
+            /* 换行 */
+            flex-wrap: wrap;
+            /* 主轴对齐方向 */
+            /* justify-content:space-evenly ; */
+            /* 侧轴的对齐方向 */
+            /* align-items: flex-start; */
+            /* 侧轴的对齐方式(多行) */
+            align-content: space-evenly;
+
+        }
+
+        .box {
+            height: 200px;
+            width: 200px;
+            border: 2px solid red;
+            background-color: skyblue;
+            box-sizing: border-box;
+        }
+        .test2{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="box test1">测试1</div>
+        <div class="box test2">测试2</div>
+        <div class="box test3">测试3</div>
+        <div class="box test4">测试4</div>
+        <div class="box test5">测试5</div>
+        <div class="box test6">测试6</div>
+        <div class="box test7">测试7</div>
+        <div class="box test8">测试8</div>
+        <div class="box test9">测试9</div>
+        <div class="box test10">测试10</div>
+        <div class="box test11">测试11</div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深浅拷贝.html</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            uname: 'pink',
+            age: 18,
+            hobby: ['乒乓球', '篮球']
+        }
+        //追加属性也可以用下面这种方式。所以就有了下面深拷贝递归函数那样的写法
+        obj['sex'] = '男'
+
+
+        console.log('obj', obj);
+        const i = {}
+        //1.浅拷贝：拷贝的是引用数据类型的地址
+        //实现方式：1.通过...obj来实现，这里...是展开运算符,2.通过Object.assign来实现
+        const o = { ...obj }
+        const iObj = Object.assign(i, obj)
+        console.log(iObj);
+
+        //2.深拷贝
+        //1.利用递归实现，手写一个拷贝递归函数
+        const testObj = {}
+        function deepClone(newObj, oldObj) {
+            for (let k in oldObj) {
+                //判断是否存在数组对象
+                if (oldObj[k] instanceof Array) {
+                    //给新对象，创建一个新数组
+                    newObj[k] = []
+                    //接收方是新对象当中的新建的空数组，送的一方就是旧数组
+                    deepClone(newObj[k], oldObj[k])
+                    //处理对象类型的引用数据
+                } else if (oldObj[k] instanceof Object) {
+                    //创建一个新对象
+                    newObj[k] = {}
+                    //接收方是新对象当中的新建的空空，送的一方就是旧对象
+                    deepClone(newObj[k], oldObj[k])
+                } else {
+                    console.log(typeof (k)); //k是String类型的。
+                    //这种写法不可取newObj.k，会被认为是像对象newObj中追加一个属性名为K的属性。
+                    //要采取下面这种写法，
+                    newObj[k] = oldObj[k]
+                }
+            }
+        }
+        deepClone(testObj, obj)
+        console.log(testObj);
+
+        //使用lodash来实现深拷贝
+    </script>
+</body>
+
+</html>

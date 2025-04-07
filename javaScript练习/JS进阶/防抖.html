@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖.html</title>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+"></script>
+</head>
+<style>
+    .box {
+        width: 400px;
+        height: 400px;
+        background-color: skyblue;
+        text-align: center;
+        font-size: 50px;
+    }
+</style>
+<div class="box">测试防抖</div>
+
+<body>
+    <script>
+        //防抖的概念：单位时间内，频繁触发事件，但只执行最后一次触发。
+        let i = 1
+        function addNum() {
+            document.querySelector('.box').innerHTML = i++;
+            console.log('111');
+        }
+        //如果存在大量操作，可能会出现错误，所以这里就利用防抖来防止错误出现
+        //1.使用lodash提供的防抖函数进行
+        //获取
+        // document.querySelector('.box').addEventListener('mousemove', _.debounce(addNum, 500))
+
+        //2.手写防抖函数:底层是使用定时器实现的。
+        function debounce(fn, time) {
+            //定义一个定时器变量
+            let timer
+            return function () {
+                //每次触发判断有没有定时器，如果有清除
+                if (timer) clearTimeout(timer)
+                //没有就开启定时器，存入到定时器变量
+                timer = setTimeout(function () {
+                    //在定时器里面调用函数
+                    fn()
+                }, time)
+            }
+        }
+        document.querySelector('.box').addEventListener('mousemove', debounce(addNum, 500))
+
+    </script>
+</body>
+
+</html>

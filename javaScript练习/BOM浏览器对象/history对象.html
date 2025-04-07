@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history对象.html</title>
+</head>
+<body>
+    <button>前进</button>
+    <button>后退</button>
+    <script>
+        let forward = document.querySelector('button:nth-child(1)');
+        let back = forward.nextElementSibling
+        forward.addEventListener('click',()=>{
+            console.log('我会读取你浏览记录的前一条，点我就会回到该页面');
+            history.forward();
+        })
+        back.addEventListener('click',()=>{
+            console.log('我会读取你浏览记录的后一条，点我就会回到该页面');
+            history.back()
+        })
+        
+        
+
+    </script>
+</body>
+</html>

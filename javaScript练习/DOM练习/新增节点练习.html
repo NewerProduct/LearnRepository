@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增节点练习.html</title>
+</head>
+<body>
+    <!-- - **`appendChild()`**：将新元素作为**最后一个**子节点添加到指定的父节点中。
+-   **`insertBefore()`**：插入到父元素中某个子元素的前面，参数有两个：第一个是要插入的新元素，第二个参数是参考的元素
+-   **`replaceChild()`**：替换父元素中某个子元素
+-   **`removeChild()`**：移除指定的子节点。 -->
+    <div>
+        <p>我会在下面添加一个新的dom节点，在上面添加一个span标签，并随便给点内容</p>
+    </div>
+    <script>
+        //确定添加的位置，p标签之后添加
+        let p  = document.querySelector('p:nth-child(1)')
+        console.log(p);
+        let div = document.querySelector('div')
+        //添加节点
+        //1.作为div的最后一个子节点被添加
+        let newDom = document.createElement('p')
+        //设置新增子节点的内容
+        newDom.textContent='这是一个新添加的p元素'
+        //添加到div的最后一个子节点
+        div.appendChild(newDom)
+        //2.在p标签前面插入一个新的元素
+        //创建元素
+        let beforeP = document.createElement('span');
+        //设置元素的内容
+        beforeP.textContent = '这是一个新添加的span标签'
+        //向指定位置添加：p标签 前面,注意了：这个前面需要说明白，要具体位置，p标签在父标签里面
+        //p标签前面添加新节点
+        p.parentNode.insertBefore(beforeP,p);
+    </script>
+</body>
+</html>

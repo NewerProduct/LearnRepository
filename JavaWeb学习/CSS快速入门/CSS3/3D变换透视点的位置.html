@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D变换透视点的位置.html</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 10px;
+            /* 开启3d空间(父元素) */
+            transform-style: preserve-3d;
+            /* 设置观察者与平面的距离(也叫景深，近大远小) */
+            perspective: 150px;
+            /* 修改透视点的位置 */
+            perspective-origin:102px 102px ;
+        }
+        .test2{
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            transform: rotateX(40deg);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box test1">
+        <div class="test2">测试2</div>
+    </div>
+    
+    <div class="box test3">测试3</div>
+    <div class="box test4">测试4</div>
+    <div class="box test5">测试5</div>
+</body>
+</html>

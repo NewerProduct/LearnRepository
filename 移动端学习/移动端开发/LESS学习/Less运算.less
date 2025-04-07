@@ -1,0 +1,19 @@
+//下面来学习less运算
+@border:5px + 4px; //加
+
+
+div{
+    height: 200px - 50px; //减
+    width: 20 * 40px; //乘
+    font-size: (40px / 4px); //除
+    border: @border solid red;
+}
+
+//定义了一个混合
+.button(@border-radius:15px){
+    border-radius: @border-radius;
+}
+//使用混合
+.button{
+    .button(10px);
+}

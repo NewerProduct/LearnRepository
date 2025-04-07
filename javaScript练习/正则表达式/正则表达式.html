@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式.html</title>
+</head>
+<body>
+    <script>
+        let str = '学习前端，成为前端大神，高薪就业';
+        //1.定义匹配规则:通过字面量来定义 语法：/要检测的内容/
+        let regex = /前端/
+        //2.进行查找，调用规则中的test方法，传入要检测的内容
+        //该方法如果匹配则返回true，不匹配则返回false
+       let result = regex.test(str);
+       console.log(result); //true
+    </script>
+</body>
+</html>

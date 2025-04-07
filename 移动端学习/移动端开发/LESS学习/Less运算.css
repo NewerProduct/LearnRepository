@@ -1,0 +1,9 @@
+div {
+  height: 150px;
+  width: 800px;
+  font-size: 10px;
+  border: 9px solid red;
+}
+.button {
+  border-radius: 10px;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素属性.html</title>
+</head>
+
+<body>
+    <img src="../images/cat.png" alt="小猫">
+    <button onclick="changeSrc()" style="display: block;">点我修改图片的src属性</button>
+</body>
+<script>
+
+    function changeSrc() {
+        //通过dom修改元素属性
+        let dom = document.querySelector('img')
+        dom.src = "../images/hand.png"
+    }
+</script>
+
+</html>

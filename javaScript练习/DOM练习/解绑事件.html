@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解绑事件.html</title>
+</head>
+<body>
+    <button>点我解绑事件</button>
+</body>
+<script>
+  let btn = document.querySelector("button")
+    //方法1：on---事件
+    // btn.onclick = function(){
+    //     alert('我被点击了')
+    //     //通过赋值空对象来解绑
+    //     btn.onclick = null
+    // }
+
+    //方法2：通过addEvenListener添加的事件,切记：匿名函数无法移除
+    function fn(){
+        alert("我是通过addEvenListener添加的事件，点击之后我就被解绑了")
+    }
+    btn.addEventListener("click",)
+    //由于第二个参数需要传入函数的名字，所以匿名函数无法移除
+    btn.removeEventListener("click",fn)
+ 
+</script>
+</html>

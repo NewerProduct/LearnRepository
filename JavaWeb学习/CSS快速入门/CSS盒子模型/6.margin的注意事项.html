@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.margin的注意事项.html</title>
+    <style>
+        /* 1. 子元素的 margin ，是参考父元素的 content 计算的。(因为是父亲的 content 中承装着子元素)
+2. 上 **margin**、左 **margin**:影响自己的位置;下 **margin**、右 **margin**:影响后面兄弟元素的位置。
+3. 块级元素、行内块元素，均可以完美地设置四个方向的 margin;**但行内元素**，左右 margin 可以完美设置，上下 margin 设置无效。
+4. **margin** 的值也可以是 **auto**，如果给一个块级元素设置左右 margin 都为 auto，**该块级元素会在父元素中水平居中。**
+5. margin 的值可以是负值。 */
+        .outer{
+            width: 400px;
+            height: 400px;
+            background-color: gray;
+            padding: 50px;
+        }
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            margin: auto;
+        }
+        .test2{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 子元素的margin是参考父元素的content计算的 -->
+    <div class="outer">
+        <div class="inner">
+            <div class="test1 test2">111</div>
+        </div>
+    </div>
+
+</body>
+</html>

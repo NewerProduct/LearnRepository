@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 属性选择器 */
+        /* 选择具有某个属性元素 */
+        p[title] {
+            color: red;
+        }
+        /* 选择具有某个属性和属性值的元素 */
+        span[title="span"] {
+            color: yellowgreen;
+        }
+        /* 选择属性值以指定字符串结尾的元素。 */
+        div[title$="div"]{
+            color: violet;
+        }
+        /* 选择属性值以指定字符串开头的元素。 */
+        h1[title^="s"] {
+            color: aqua;
+        }
+        /* 选择属性值包含指定字符串的元素 */
+        span[title*="span"]{
+            color:rgb(174, 0, 255);
+        }
+</style>
+</head>
+
+<body>
+  <p title="test">你好</p>
+  <span title="span">这是span标签</span>
+  <div title="testdiv">这是盒子标签</div>
+  <h1 title="start">这是h1标签</h1>
+</body>
+
+</html>

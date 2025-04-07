@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS实现扇形.html</title>
+</head>
+
+<body>
+    <div class="fan-shape"></div>
+</body>
+<style>
+    /* 生成一个扇形。主要是通过borer属性配合border-radius来绘制一个圆形，然后隐藏
+    部分边框 */
+    .fan-shape {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        border: 50px solid transparent;
+        border-top-color: #3498db;
+        border-left-color: #3498db;
+        transform: rotate(-45deg);
+    }   
+</style>
+
+</html>

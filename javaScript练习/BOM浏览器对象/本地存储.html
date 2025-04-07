@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储.html</title>
+</head>
+
+<body>
+    <script>
+        //利用localStorage存储数据 以K-V形式存储
+        localStorage.setItem('name', '小李');
+        //从localStorage读取数据
+        let name = localStorage.getItem('name');
+        console.log(name);//小李
+        //从localStorage中删除数据
+        // let deleteE =  localStorage.removeItem('name');
+        
+        
+        //存储复杂类型数据
+        let person = {
+            name:'张天语',
+            age:32,
+            address:'北京'
+        } 
+        //存储复杂类型我们将其转换为json字符串存储。因为直接存储数据就无法使用了
+        let jsonP = JSON.stringify(person);
+        console.log(jsonP); //{"name":"张天语","age":32,"address":"北京"}
+        localStorage.setItem('obj',jsonP)
+
+        //取出对象-取出来的是字符串形式的对象
+        let obj = localStorage.getItem('obj')
+        console.log(typeof(obj)); //string
+        //利用JSON中的parse方法来解析JSON字符串，把字符串转为对象即可使用
+        console.log(JSON.parse(obj));
+        console.log(typeof(JSON.parse(obj))); //object
+        
+        
+
+    </script>
+</body>
+
+</html>

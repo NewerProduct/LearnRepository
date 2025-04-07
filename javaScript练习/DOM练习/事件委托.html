@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托.html</title>
+</head>
+<body>
+    <!-- 1. **选择一个合适的祖先元素**：选择一个包含所有相关子元素的共同祖先作为事件监听器的挂载点。
+2. **添加事件监听器**：在选定的祖先元素上添加事件监听器，通常是在`click`、`mouseover`等常见事件类型上。
+3. **检查事件目标**：在事件处理函数中，使用`event.target`来确定触发事件的实际元素，并根据需要做出响应。 -->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <p>我不需要变色</p>
+</ul>
+</body>
+<script>
+    //利用事件委托,这就是因为存在事件冒泡的原因。
+    let ul = document.querySelector("ul")
+    //通过事件对象中的target来拿到实际需要触发事件的元素
+    ul.addEventListener('click',(event)=>{
+        console.log(event);
+        //通过判断tagName来更确切的确定要触发事件的元素
+        if(event.target.tagName =="LI"){
+            event.target.style.color = "red"
+        }
+        
+        
+    })
+</script>
+</html>

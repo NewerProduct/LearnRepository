@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖和节流.html</title>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+"></script>
+</head>
+<style>
+    .box {
+        width: 400px;
+        height: 400px;
+        background-color: skyblue;
+        text-align: center;
+        font-size: 50px;
+    }
+</style>
+<div class="box">测试节流</div>
+
+<body>
+    <script>
+        //防抖的概念：单位时间内，频繁触发事件，只执行一次
+        let i = 1
+        function addNum() {
+            document.querySelector('.box').innerHTML = i++;
+            console.log('111');
+        }
+        //1.使用lodash提供的节流函数进行
+        //获取
+        // document.querySelector('.box').addEventListener('mousemove', _.throttle(addNum, 1000))
+
+        //2.手写节流函数:底层是使用定时器实现的。
+        function throttle(fn, time) {
+            //定义一个定时器变量
+            let timer = null
+            return function () {
+                //每次触发判断有没有定时器，如果有定时，不做任何操作
+                if (!timer) {
+                    //没有就开启定时器，存入到定时器变量
+                    timer = setTimeout(function () {
+                        //在定时器里面调用函数
+                        fn()
+                        //清空定时器 - 需要注意的是，在定时器内部清除定时器不能使用clearTimeout，而是要重新给定时器赋值为空才行
+                        timer = null
+                    }, time)
+                }
+
+            }
+        }
+        document.querySelector('.box').addEventListener('mousemove', throttle(addNum, 1000))
+
+    </script>
+</body>
+
+</html>

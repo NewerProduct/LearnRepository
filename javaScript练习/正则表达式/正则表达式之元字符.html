@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式之元字符.html</title>
+</head>
+<body>
+    <script>
+        //在JavaScript的正则表达式中，元字符（Metacharacters）是一些具有特殊含义的字符，它们被用来
+        //定义复杂的搜索模式。
+        // ^：以后面的内容开头
+        // $:一般位于正则表达式的末尾，表示以它前面的内容结尾
+        // /^S$/ 一起出现表示精确查找也就是被查找的内容只有一个'S'
+        console.log(/^二哈/.test('二哈')); //true
+        console.log(/^二哈/.test('二')); //false
+        console.log(/二哈$/.test('二')); //false
+        console.log(/二哈$/.test('二哈')); //true
+        
+    </script>
+</body>
+</html>

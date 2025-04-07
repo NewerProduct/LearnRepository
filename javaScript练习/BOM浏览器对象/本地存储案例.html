@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本地存储案例.html</title>
+    <style>
+        .outer {
+            width: 90%;
+            border: 1px solid red;
+            border-radius: 10px;
+            margin: 0 auto;
+            height: 800px;
+            padding: 20px;
+        }
+
+        #btn1 {
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .table {
+            width: 90%;
+            background-color: skyblue;
+            border: 1px solid red;
+            margin: 0 auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        th,
+        td,
+        tr {
+            border: 2px solid black;
+        }
+
+        .form {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="header">
+            <h2>新增学生</h2>
+            <div class="form">
+                <form id="form1">
+                    姓名：<input type="text" name="username" id="username">
+                    年龄：<input type="text" name="age" id="age">
+                    性别：<select name="sex" id="sex">
+                        <option value="男性">男性</option>
+                        <option value="女性">女性</option>
+                    </select>
+                    薪资：<input type="text" name="salary" id="salary">
+                    就业城市：<select name="city" id="city">
+                        <option value="beijing">北京</option>
+                        <option value="caoxian">曹县</option>
+                        <option value="shanghai">上海</option>
+                        <option value="tianjin">天津</option>
+                    </select>
+                    <button type="submit" id="submit">提交信息</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="container">
+            <table class="table">
+                <h3>就业榜</h3>
+                <thead>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>薪资</th>
+                    <th>就业城市</th>
+                    <th>操作</th>
+                </thead>
+                <tbody class="tbody">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        //获取表单DOM对象，拿到数据
+        let form = document.querySelector('#form1');
+        let username = document.querySelector('#username');
+        let age = document.querySelector('#age');
+        let sex = document.querySelector('#sex');
+        let salary = document.querySelector('#salary');
+        let city = document.querySelector('#city');
+        let tbody = document.querySelector('.tbody');
+        let person = [{
+            uname: username.value,
+            age: age.value,
+            sex: sex.value,
+            salary: salary.value,
+            city: city.value
+        }]
+
+        //向本地存储存入数据
+        // localStorage.setItem('person', JSON.stringify(person))
+         //从本地存储把数据拿到：把数组转换为数组对象，若没有数据，则返回空数组
+         let arr = JSON.parse(localStorage.getItem('data')) || []
+        //1.渲染数据，利用map + join来渲染页面
+        function render() {
+            //从本地存储把数据拿到：把数组转换为数组对象，若没有数据，则返回空数组
+            let arr = JSON.parse(localStorage.getItem('data')) || []
+            //map方法遍历数组，该方法返回数组，
+            let data = arr.map((element, index) => {
+                return `
+                        <tr>
+                         <td>${element.uname}</td>
+                          <td>${element.age}</td>
+                          <td>${element.sex}</td>
+                          <td>${element.salary}</td>
+                          <td>${element.city}</td>
+                          <td><a href="javascript:;" data-id="${index}">删除</a></td>
+                          </tr>
+                          `
+
+            })
+
+            //(2)把新返回的数组转换为字符串，利用join方法
+            //(3)把转换后的追加给tbody
+            tbody.innerHTML = data.join("")
+            console.log("渲染了");
+        }
+        render();
+        //新增数据
+        form.addEventListener('submit', (e) => {
+            //阻止默认事件
+            e.preventDefault();
+            if (!username.value || !age.value || !salary.value) {
+                alert('数据不能为空')
+            } else {
+                //给arr数组追加新的对象，用来新增
+                arr.push({
+                    uname: username.value,
+                    age: age.value,
+                    sex: sex.value,
+                    salary: salary.value,
+                    city: city.value
+                })
+                //把新增的数据存入localStorage中
+                localStorage.setItem('data', JSON.stringify(arr))
+                //渲染页面
+                render();
+                form.reset();
+            }
+
+        })
+
+        //删除数据
+        tbody.addEventListener('click', (e) => {
+            if (e.target.tagName == 'A') {
+                //首先获取一下要删除元素的数组
+                let deleteData = JSON.parse(localStorage.getItem('data'));
+                //通过splice指定要删除的位置和个数
+                deleteData.splice(e.target.dataset.id, 1)
+                //把删除完成之后的数组赋值回去，达到覆盖修改
+                localStorage.setItem('data', JSON.stringify(deleteData));
+                render();
+            }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

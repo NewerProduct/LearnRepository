@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab栏切换.html</title>
+    <style>
+        .outer {
+            width: 600px;
+            height: 600px;
+            border: 2px solid red;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .top {
+            width:90%;
+            height:100px;
+            box-sizing: border-box;
+            border: 1px solid black;
+         
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            width:90%;
+            height:500px;
+            box-sizing: border-box;
+            border: 1px solid;
+        }
+        .font  {
+            height: 100px;
+            border: 1px solid skyblue;
+            width: 30%;
+            text-align: center;
+            line-height: 100px;
+        }
+        .font a {
+            cursor: pointer;
+            text-decoration: none;
+        }
+ 
+        .top span:hover {
+            transition: all 0.3s linear;
+            text-decoration: underline 5px solid red;
+        }
+        .top div:hover {
+            transform: scale(1.5);
+            transition: all 0.5s linear;
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+        }
+        img {
+            position: absolute;
+            left: 0;
+            top: 100px;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+        .display {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="top">
+            <div class="c1 font"><span>数学</span></div>
+            <div class="c2 font"><span>美术</span></div>
+            <div class="c3 font"><span>音乐</span></div>
+        </div>
+        <div class="container">
+            <img src="../images/cat1.png" alt="" >
+            <img src="../images/cat2.png" alt="" >
+        </div>
+    </div>
+</body>
+<script>
+    let imgData =['../images/cat1.png','../images/cat1.png']
+    let img2 =document.querySelector('img:nth-child(2)')
+    let img1 =document.querySelector('img:nth-child(1)')
+
+    let span = document.querySelectorAll("span")
+    console.log(span);
+    span[0].addEventListener("mouseenter",()=>{
+        img2.classList.add("display")
+        img1.classList.remove("display")
+    })
+    span[1].addEventListener("mouseenter",()=>{
+        img1.classList.add("display")
+        img2.classList.remove("display")
+    })
+
+</script>
+</html>

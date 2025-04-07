@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流综合案例.html</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<style>
+    video {
+        width: 400px;
+        height: 400px;
+    }
+    .video {
+        margin: 0 auto;
+        width: 400px;
+        height: 400px;
+    }
+</style>
+<body>
+    <div class="video">
+        <video src="../视频素材/3月19日.mp4" controls></video>
+    </div>
+    <script>
+
+        //本案例要求当一个视频播放时，关闭页面，再次打开页面，从上次播放的位置可以再次播放
+        //该案例的思路是：当触发了ontimeupdate事件，我们每隔1s记录一次当前时间，存在本地存储中
+        //下次打开页面，onloadeddata事件触发，就可以从本地存储中拿出上次存储的时间，让视频从取出的时间播放，
+        //如果没有就设置为0s
+       const video = document.querySelector('video')
+       //ontimeupdate 是一个 HTML5 视频 (<video>) 和音频 (<audio>) 元素的事件处理器，用于在播放进度发生变化时触发。
+        //因为ontimeupdate触发频率很高，所以这里使用节流控制1s记录一次
+       video.ontimeupdate = _.throttle(()=>{
+       localStorage.setItem('currentTime',video.currentTime)
+       },1000)
+       //onloadeddata 是一个事件处理器，
+       //它与 HTML5 的 <video> 和 <audio> 元素关联，用于处理 loadeddata 事件。当浏览器已经加载了足够的数据，可以开始播放媒体的第一帧时，就会触发 loadeddata 事件。
+       video.onloadeddata = function() {
+        //从本地存储拿出上储存的数据
+       let time =  localStorage.getItem('currentTime') || 0
+       video.currentTime = time
+       }
+    </script>
+</body>
+
+</html>

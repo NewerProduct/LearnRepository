@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结合Axios来写链式调用.html</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <script>
+        //由于每发起一次请求，就会有一个新的promise对象所以可以下向下面这样写
+        axios({ url: 'http://hmajax.itheima.net/api/province' }).then(result => {
+            const pname = result.data.list[0]
+            //在then函数中，继续向外层return一个新的promise对象
+            return axios({ url: 'http://hmajax.itheima.net/api/city', params: { pname: pname } })
+            //.then的位置要写在then函数外，因为利用的是该函数的返回值。
+        }).then(result => {
+            const pname = result.config.params.pname
+            console.log(pname);//北京
+            const cname = result.data.list[0]
+            return axios({ url: 'http://hmajax.itheima.net/api/area', params: { pname: pname, cname: cname } })
+            //.then的位置要写在then函数外，因为利用的是该函数的返回值。
+        }).then(result => {
+            console.log(result); //
+        })
+    </script>
+</body>
+
+</html>

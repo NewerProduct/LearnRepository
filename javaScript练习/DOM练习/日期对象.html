@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期对象.html</title>
+</head>
+
+<body>
+    <script>
+        //第一部分创建一个日期对象，有下面这几种方法
+        //1.无参数-创建一个表示当前日期和时间的对象
+        const nowTime = new Date();
+        console.log('当前时间是：', nowTime);
+        //2.**带参数** - 创建一个指定日期和时间的对象：注意月份是从 0 开始的，所以 8 月是 7
+        const specificDate = new Date(2024, 7, 14);
+        console.log("我指定创建了一个时间，这个时间是2024年8月14日：", specificDate);
+        //3.**毫秒数** - 创建一个从1970年1月1日午夜开始经过的毫秒数所表示的日期：
+        const milliSecondsSinceEpoch = new Date(1692278827000);
+        console.log("这是一个从1970年1月1日午夜开始经过的毫秒数所表示的日期：", milliSecondsSinceEpoch);
+        //第二部分，获取日期和时间的部分,方法有如下：
+        //`getFullYear()`, `getMonth()`, `getDate()``getHours()`, `getMinutes()`, `getSeconds()`, `getMilliseconds()`
+        //`getTime()` - 返回从1970年1月1日午夜开始经过的毫秒数。
+        //我们以上面的现在的时间为例，来进行获取
+        //获取当前年份
+        console.log(nowTime.getFullYear()); //2024
+        //获取月份，：注意月份是从0开始的所以1~12月在代码中实际上是0~11月,所以一般加1
+        console.log(nowTime.getMonth() +1 ); //8
+        //获取日期
+        console.log(nowTime.getDate()); //17
+        //获取小时数
+        console.log(nowTime.getHours()); //12
+        //获取分钟数
+        console.log(nowTime.getMinutes());
+        //获取秒数
+        console.log(nowTime.getSeconds());
+        //获取毫秒数
+        console.log(nowTime.getMilliseconds());
+        //获取从1970年1月1日午夜开始到现在经过的毫秒数
+        console.log(nowTime.getTime()); //1723868451890
+        //第三部分，设置时间
+        const today = new Date();
+        today.setFullYear(2025);
+        today.setDate(1);
+        today.setMonth(0); // 设置为一月
+        console.log(today); //Wed Jan 01 2025 12:22:06 GMT+0800 (中国标准时间)
+        //日期对象还可以用来格式化日期把日期写成我们的标准形式，以上面的today为例，来进行格式化 Y - M - D
+        //1-9月前面要加0，大于9月可以不用加
+        let formattedDate = `当前时间是:${today.getFullYear()}年-${'0'+ (+today.getMonth() + 1) }月-${today.getDate()}`
+        console.log(formattedDate); //当前时间是:2025年-01月-1
+       console.log(today.toJSON()); 
+
+    </script>
+</body>
+
+</html>

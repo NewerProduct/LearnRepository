@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用单位</title>
+    <style>
+        #test1 {
+            /* 第一种长度单位：px(像素) */
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+        }
+        #test2 {
+            /* 第一种长度单位：em(相对于当前元素的font-size的倍数或其父元素) */
+            background-color: blue;
+            width: 10em;
+            height: 10em;
+            /* 这里要注意继承性，如果本体没有那么就会向上找font-size，
+            浏览器默认font-size是16px */
+            font-size: 20px;
+        }
+        #test3 {
+            /* 第三种种长度单位：rem(r指的是root根元素(HTML)：相对于根元素的font-size的倍数) */
+            background-color: red;
+            width: 10rem;
+            height: 10rem;
+        }
+        #test4 {
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+        }
+        .inside {
+            /* 第四种种长度单位：%(相对于其父元素的百分比) */
+            background-color: yellow;
+            width: 50%;
+            height: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="test1">测试1</div>
+    <hr>
+    <div id="test2">测试2</div>
+    <hr>
+    <div id="test3">测试3</div>
+    <hr>
+    <div id="test4">
+        <div class="inside">1</div>
+    </div>
+  
+</body>
+</html>

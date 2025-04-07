@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延时函数.html</title>
+</head>
+
+<body>
+    <script>
+        //延时函数参数有两个，一个是回调函数，一个是延时的秒数
+        let timer1 = setTimeout(() => {
+            console.log("2秒后打印");
+        }, 2000);
+        //清除延时函数
+        clearTimeout(timer1)
+        //周期执行函数参数有两个，一个是回调函数，一个是周期执行的秒数
+        let timer2 = setInterval(() => {
+            console.log("1111");
+        }, 1000);
+        //清除周期执行函数
+        clearInterval(timer2)
+    </script>
+</body>
+
+</html>

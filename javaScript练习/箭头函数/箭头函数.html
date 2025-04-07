@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数.html</title>
+</head>
+
+<body>
+    <script>
+        const fn = x => x
+        console.log(fn(1));
+
+        // const uname = (uname) => ({uname:uname})
+        // console.log(uname('刘德华'));
+        // const uname = (uname) => {
+        //     return {
+        //         uname:uname
+        //     }
+        // }
+        // console.log(uname('刘德华'));
+
+        //使用箭头函数求和,这里用剩余参数去写
+        let sum = 0;
+        const getSum = (...arr) => {
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+        const result = getSum(1, 5);
+        console.log(result);
+    </script>
+</body>
+
+</html>

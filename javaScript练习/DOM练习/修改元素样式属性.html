@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改元素样式属性.html</title>
+</head>
+<style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: skyblue;
+    }
+    .testStyle1 {
+        height: 400px;
+        width: 400px;
+        background-color: skyblue;
+        border-radius: 15px;
+        border: 2px solid red;
+        margin-top: 10px;
+    }
+    .testStyle2 {
+        height: 400px;
+        width: 400px;
+        background-color: red;
+        border-radius: 15px;
+        border: 2px solid hotpink;
+        margin-top: 10px;
+    }
+    .test{
+        background-color: black;
+    }
+</style>
+<body>
+    <!-- - 通过`style`属性来操作CSS
+- 通过类名(className)来操作CSS
+- 通过classList操作类控制CSS -->
+<div> </div>
+<div> </div>
+<div class="test"> </div>
+
+</body>
+<script>
+    // 对象.style.属性 = 值
+    let box = document.querySelector('div')
+    box.style.width = '400px'
+    box.style.backgroundColor = "red"
+    box.style.border = "2px solid blue"
+    //通过类名(className)来操作CSS
+    let box1 = document.querySelector("div:nth-child(2)")
+    box1.className = "testStyle1"
+    //通过classList操作类控制CSS
+    let box2 = document.querySelector("div:nth-child(3)")
+    box2.classList.add("testStyle2")
+        //添加这行代码。会让第三个盒子背景变为红色
+    box2.classList.remove("test") 
+    box2.classList.toggle("test")
+   
+</script>
+</html>
